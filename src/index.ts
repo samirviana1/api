@@ -6,7 +6,7 @@ import {stickynotesExiste, validaStickynotes} from "./middlewares";
 //import  router  from "./router"
 
 const app: Express = express();
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json()); //router)
 
