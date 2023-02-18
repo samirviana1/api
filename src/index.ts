@@ -18,7 +18,7 @@ app.get("/", (req: Request, res: Response) => {
     `);
 });
 app.get("/users", user.getUserList);
-app.get("/login", buscarUser, user.logUser);
+app.post("/login", buscarUser, user.logUser);
 app.post("/users", validaUser, userExiste, user.createUser);
 
 app.post("/notes", validaStickynotes, stickynotes.createStickynotes);

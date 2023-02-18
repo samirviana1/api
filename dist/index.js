@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
     `);
 });
 app.get("/users", services_1.user.getUserList);
-app.get("/login", middlewares_1.buscarUser, services_1.user.logUser);
+app.post("/login", middlewares_1.buscarUser, services_1.user.logUser);
 app.post("/users", middlewares_1.validaUser, middlewares_1.userExiste, services_1.user.createUser);
 app.post("/notes", middlewares_2.validaStickynotes, services_1.stickynotes.createStickynotes);
 app.get("/notes", services_1.stickynotes.searchStickynotes);
