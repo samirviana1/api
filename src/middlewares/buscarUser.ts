@@ -3,7 +3,7 @@ import {list} from "../data";
 import {IResposta} from "../interfaces";
 
 export function buscarUser(req: Request, res: Response, next: NextFunction) {
-  const {email} = req.params;
+  const {email} = req.body;
   const user = list.find((value) => value.email === email);
   if (!user) {
     return res.status(404).json({
