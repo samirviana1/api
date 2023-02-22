@@ -4,7 +4,7 @@ exports.stickynotesExiste = void 0;
 const data_1 = require("../data");
 function stickynotesExiste(req, res, next) {
     const { id } = req.params;
-    const filterStickynotes = data_1.listSn.find((stknotes) => stknotes.uid === id);
+    const filterStickynotes = data_1.listSn.find((stknotes) => stknotes.id === id);
     console.log(filterStickynotes);
     if (!filterStickynotes) {
         return res.status(404).json({

@@ -8,7 +8,7 @@ export function stickynotesExiste(
   next: NextFunction
 ) {
   const {id} = req.params;
-  const filterStickynotes = listSn.find((stknotes) => stknotes.uid === id);
+  const filterStickynotes = listSn.find((stknotes) => stknotes.id === id);
   console.log(filterStickynotes);
 
   if (!filterStickynotes) {
