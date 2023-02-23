@@ -11,8 +11,8 @@ class Stickynotes {
     } as IResposta);
   }
   searchStickynotesForId(req: Request, res: Response) {
-    const {id} = req.params;
-    const stickynotes = listSn.find((value) => value.uid === id);
+    const {uid} = req.params;
+    const stickynotes = listSn.find((value) => value.uid === uid);
     res.status(200).json({
       sucesso: true,
       dados: stickynotes,
