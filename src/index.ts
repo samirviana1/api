@@ -23,8 +23,10 @@ app.post("/users", validaUser, userExiste, user.createUser);
 
 app.post("/notes", validaStickynotes, stickynotes.createStickynotes);
 app.get("/notes", stickynotes.searchStickynotes);
-app.get("/notes/:uid", stickynotesExiste, stickynotes.searchStickynotesForId);
+app.get("/notes/:uid", stickynotes.searchStickynotesForId);
 app.put("/notes/:id", stickynotesExiste, stickynotes.updateStickynotes);
 app.delete("/notes/:id", stickynotesExiste, stickynotes.deleteStickynotes);
 
-app.listen(port, () => console.log("server estatus: positivo e operante!"));
+app.listen(port, () =>
+  console.log("server estatus: positivo e operante na porta:", `${port}`)
+);
