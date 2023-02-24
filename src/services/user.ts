@@ -42,6 +42,7 @@ class User {
     }
 
     const userLogado = {
+      id: list[userIndex].id,
       email: list[userIndex].email,
       username: list[userIndex].name,
     };

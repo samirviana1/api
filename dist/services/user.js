@@ -35,6 +35,7 @@ class User {
             });
         }
         const userLogado = {
+            id: data_1.list[userIndex].id,
             email: data_1.list[userIndex].email,
             username: data_1.list[userIndex].name,
         };
