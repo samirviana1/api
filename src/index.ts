@@ -19,7 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.get("/users", user.getUserList);
 app.post("/login", buscarUser, user.logUser);
-app.post("/users", validaUser, userExiste, user.createUser);
+app.post("/users", userExiste, validaUser, user.createUser);
 
 app.post("/notes", validaStickynotes, stickynotes.createStickynotes);
 app.get("/notes", stickynotes.searchStickynotes);
