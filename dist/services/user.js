@@ -12,7 +12,7 @@ class User {
     }
     searchUserForId(req, res) {
         const { id } = req.params;
-        const user = data_1.list.find((value) => value.id === id);
+        const user = data_1.list.filter((value) => value.id === id);
         res.status(200).json({
             sucesso: true,
             dados: user,

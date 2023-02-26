@@ -13,7 +13,7 @@ class User {
 
   searchUserForId(req: Request, res: Response) {
     const {id} = req.params;
-    const user = list.find((value) => value.id === id);
+    const user = list.filter((value) => value.id === id);
     res.status(200).json({
       sucesso: true,
       dados: user,
