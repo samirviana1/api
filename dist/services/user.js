@@ -11,8 +11,8 @@ class User {
         });
     }
     searchUserForId(req, res) {
-        const { email } = req.params;
-        const user = data_1.list.find((value) => value.email === email);
+        const { id } = req.params;
+        const user = data_1.list.find((value) => value.id === id);
         res.status(200).json({
             sucesso: true,
             dados: user,
