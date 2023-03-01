@@ -12,7 +12,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stickynotes = void 0;
 const typeorm_1 = require("typeorm");
 const user_1 = require("./user");
-let Stickynotes = class Stickynotes {
+const uuid_1 = require("uuid");
+let Stickynotes = class Stickynotes extends typeorm_1.BaseEntity {
+    beforeInsert() {
+        this.uid_msg = (0, uuid_1.v4)();
+        this.createdAt = new Date();
+    }
+    beforeUpdate() {
+        this.updatedAt = new Date();
+    }
 };
 __decorate([
     (0, typeorm_1.PrimaryColumn)(),
@@ -21,7 +29,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ name: "title" }),
     __metadata("design:type", String)
-], Stickynotes.prototype, "name", void 0);
+], Stickynotes.prototype, "title", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "description" }),
     __metadata("design:type", String)
@@ -35,11 +43,23 @@ __decorate([
     __metadata("design:type", Date)
 ], Stickynotes.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.OneToOne)(() => user_1.Users, (fk) => fk.Sticky),
-    (0, typeorm_1.JoinColumn)({ name: "uid", referencedColumnName: "user_uid" }),
-    __metadata("design:type", user_1.Users)
-], Stickynotes.prototype, "Sticky", void 0);
+    (0, typeorm_1.ManyToOne)(() => user_1.Users),
+    (0, typeorm_1.JoinColumn)({ name: "uid_user" }),
+    __metadata("design:type", String)
+], Stickynotes.prototype, "uidUser", void 0);
+__decorate([
+    (0, typeorm_1.BeforeInsert)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], Stickynotes.prototype, "beforeInsert", null);
+__decorate([
+    (0, typeorm_1.BeforeUpdate)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], Stickynotes.prototype, "beforeUpdate", null);
 Stickynotes = __decorate([
-    (0, typeorm_1.Entity)({ name: "mensagens" })
+    (0, typeorm_1.Entity)({ name: "stickynotes" })
 ], Stickynotes);
 exports.Stickynotes = Stickynotes;

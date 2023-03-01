@@ -1,20 +1,17 @@
 import {
+  BaseEntity,
   BeforeInsert,
   BeforeUpdate,
   Column,
   Entity,
-  JoinColumn,
-  OneToMany,
-  OneToOne,
   PrimaryColumn,
 } from "typeorm";
-import {Stickynotes} from "./stickyNotes";
 import {v4 as uid} from "uuid";
 
 @Entity({name: "users"})
-export class Users {
-  @PrimaryColumn()
-  uid!: string;
+export class Users extends BaseEntity {
+  @PrimaryColumn({name: "uid_user"})
+  uidUser!: string;
   @Column({name: "name"})
   name!: string;
   @Column({name: "email"})
@@ -25,12 +22,15 @@ export class Users {
   createdAt!: Date;
   @Column({name: "updated_at"})
   updatedAt?: Date;
-  @OneToMany(() => Stickynotes, (fk) => fk.Sticky)
-  @JoinColumn({name: "uid", referencedColumnName: "user_uid"})
-  Sticky?: Stickynotes[];
 
   @BeforeInsert()
   beforeInsert() {
-    this.uid = uid();
+    this.uidUser = uid();
+    this.createdAt = new Date();
+  }
+
+  @BeforeUpdate()
+  beforeUpdate() {
+    this.updatedAt = new Date();
   }
 }

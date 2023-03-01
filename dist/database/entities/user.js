@@ -11,17 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Users = void 0;
 const typeorm_1 = require("typeorm");
-const stickyNotes_1 = require("./stickyNotes");
 const uuid_1 = require("uuid");
-let Users = class Users {
+let Users = class Users extends typeorm_1.BaseEntity {
     beforeInsert() {
-        this.uid = (0, uuid_1.v4)();
+        this.uidUser = (0, uuid_1.v4)();
+        this.createdAt = new Date();
+    }
+    beforeUpdate() {
+        this.updatedAt = new Date();
     }
 };
 __decorate([
-    (0, typeorm_1.PrimaryColumn)(),
+    (0, typeorm_1.PrimaryColumn)({ name: "uid_user" }),
     __metadata("design:type", String)
-], Users.prototype, "uid", void 0);
+], Users.prototype, "uidUser", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "name" }),
     __metadata("design:type", String)
@@ -43,16 +46,17 @@ __decorate([
     __metadata("design:type", Date)
 ], Users.prototype, "updatedAt", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => stickyNotes_1.Stickynotes, (fk) => fk.Sticky),
-    (0, typeorm_1.JoinColumn)({ name: "uid", referencedColumnName: "user_uid" }),
-    __metadata("design:type", Array)
-], Users.prototype, "Sticky", void 0);
-__decorate([
     (0, typeorm_1.BeforeInsert)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], Users.prototype, "beforeInsert", null);
+__decorate([
+    (0, typeorm_1.BeforeUpdate)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], Users.prototype, "beforeUpdate", null);
 Users = __decorate([
     (0, typeorm_1.Entity)({ name: "users" })
 ], Users);
