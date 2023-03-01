@@ -43,7 +43,7 @@ __decorate([
 ], Users.prototype, "createdAt", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: "updated_at" }),
-    __metadata("design:type", Date)
+    __metadata("design:type", Object)
 ], Users.prototype, "updatedAt", void 0);
 __decorate([
     (0, typeorm_1.BeforeInsert)(),

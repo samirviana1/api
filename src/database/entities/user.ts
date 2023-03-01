@@ -21,7 +21,7 @@ export class Users extends BaseEntity {
   @Column({name: "created_at"})
   createdAt!: Date;
   @Column({name: "updated_at"})
-  updatedAt?: Date;
+  updatedAt?: Date | null;
 
   @BeforeInsert()
   beforeInsert() {

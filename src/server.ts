@@ -1,9 +1,6 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import {stickynotes, user} from "./services";
-import {buscarUser, userExiste, validaUser} from "./middlewares";
-import {stickynotesExiste, validaStickynotes} from "./middlewares";
 import {pgHelper} from "./database/pg-helper";
 
 const port = process.env.PORT || 8080;

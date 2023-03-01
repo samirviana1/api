@@ -22,7 +22,7 @@ export class Stickynotes extends BaseEntity {
   @Column({name: "created_at"})
   createdAt!: Date;
   @Column({name: "updated_at"})
-  updatedAt?: Date;
+  updatedAt?: Date | null;
 
   @ManyToOne(() => Users)
   @JoinColumn({name: "uid_user"})

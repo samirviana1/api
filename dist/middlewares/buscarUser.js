@@ -6,7 +6,7 @@ function buscarUser(req, res, next) {
     const { email } = req.body;
     const user = data_1.list.find((value) => value.email === email);
     if (!user) {
-        return res.status(404).json({
+        return res.status(400).json({
             sucesso: false,
             mensagem: "Usuario não encontrado!",
             dados: null,
